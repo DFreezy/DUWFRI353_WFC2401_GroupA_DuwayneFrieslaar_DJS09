@@ -1,10 +1,12 @@
-// Union Types Challenge
-// 1. Fix the function to show the price per night for each property card only
-// if isLoggedIn is true, or the you object has Permissions. (all permissions should work)
-// 2. See what happens when a null object to be passed to the you objects permissions.
+// Literal Types
+// 1. Based on what we have learnt about literal types with the price, can you make
+// a Country literal type? You only have to include the countries we are dealing with in 
+// the project.
+// 2. Can you create a file and store all your types aliases in there?
 
-import { showReviewTotal, populateUser } from './utils'
+import { showReviewTotal, populateUser, showDetails } from './utils'
 import { Permissions , LoyaltyUser } from './enums'
+import { Price, Country } from './types'
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
@@ -42,7 +44,6 @@ const you = {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
-
 // Array of Properties
 const properties : {
     image: string;
@@ -52,7 +53,7 @@ const properties : {
         firstLine: string;
         city: string;
         code: number;
-        country: string;
+        country: Country;
     };
     contact: [ number, string ];
     isAvailable: boolean;
@@ -100,19 +101,8 @@ const properties : {
 
 // Functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+
 populateUser(you.isReturning, you.firstName)
-
-let authorityStatus : any
-
-isLoggedIn = false
-
-function showDetails(authorityStatus: boolean | Permissions, element : HTMLDivElement, price: number) {
-   if (authorityStatus) {
-       const priceDisplay = document.createElement('div')
-       priceDisplay.innerHTML = price.toString() + '/night'
-       element.appendChild(priceDisplay)
-   }
-}
 
 // Add the properties
 for (let i = 0; i < properties.length; i++) {
@@ -122,8 +112,8 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement('img')
     image.setAttribute('src', properties[i].image)
     card.appendChild(image)
+    showDetails(you.permissions, card, properties[i].price)
     propertyContainer.appendChild(card)
-    showDetails({}, card, properties[i].price)
 }
 
 let currentLocation : [string, string, number] = ['London', '11.03', 17]
