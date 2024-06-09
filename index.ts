@@ -1,6 +1,6 @@
-// Object Types Challenge
-// Based on what we discussed we need to make up our Property Objects and array,
-// can you create that array, making sure to assign the correct Types?
+
+const propertyContainer = document.querySelector('.properties')
+const footer = document.querySelector('.footer')
 
 import { showReviewTotal, populateUser } from './utils'
 let isOpen: boolean
@@ -58,11 +58,11 @@ const properties : {
         code: number;
         country: string;
     };
-    contact: string;
+    contact: [number, string];
     isAvailable: boolean;
 }[] = [
     {
-        image: '',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQItNmLE2nm2NYAEh3VNSH00cwCD6UkIR3fXQ&s',
         title: 'Colombian Shack',
         price: 45,
         location: {
@@ -71,13 +71,13 @@ const properties : {
             code: 45632,
             country: 'Colombia'
         },
-        contact: 'marywinkle@gmail.com',
+        contact: [+1113667778664, 'marywinkle@gmail.com'],
         isAvailable: true
         
     },
 
     {
-        image: '',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr6GtRXRaDFlZzDRhDBb6t3WThiZ2Sp9obZg&s',
         title: 'London Flat',
         price: 23,
         location: {
@@ -86,12 +86,12 @@ const properties : {
             code: 35433,
             country: 'United Kingdom',
         },
-        contact: 'garydavis@hotmail.com',
+        contact: [+116856795534, 'garydavis@hotmail.com'],
         isAvailable: false 
     },
 
     {
-        image: '',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFlZo727G2zM_cq9fG5PcVHs4tyclyog_IaA&s',
         title: 'London Flat',
         price: 23,
         location: {
@@ -100,7 +100,7 @@ const properties : {
             code: 35433,
             country: 'United States',
         },
-        contact: 'liloroiyce@hotmail.com',
+        contact: [+12455455454574, 'liloroiyce@hotmail.com'],
         isAvailable: true 
     },
     
@@ -111,3 +111,15 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
+for (let i = 0; i < properties.length; i++) {
+    const card = document.createElement('div')
+    card.classList.add('card')
+    card.innerHTML = properties[i].title
+    const image = document.createElement('img')
+    image.setAttribute('src', properties[i].image)
+    card.appendChild(image)
+    propertyContainer.appendChild(card)
+}
+
+let currentLocation: [string, string, number] = ['London', '11:35', 17]
+footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
