@@ -74,7 +74,36 @@ const properties : {
         contact: 'marywinkle@gmail.com',
         isAvailable: true
         
-    }
+    },
+
+    {
+        image: '',
+        title: 'London Flat',
+        price: 23,
+        location: {
+            firstLine: 'flat 15',
+            city: 'London',
+            code: 35433,
+            country: 'United Kingdom',
+        },
+        contact: 'garydavis@hotmail.com',
+        isAvailable: false 
+    },
+
+    {
+        image: '',
+        title: 'London Flat',
+        price: 23,
+        location: {
+            firstLine: 'flat 17',
+            city: 'Chicago',
+            code: 35433,
+            country: 'United States',
+        },
+        contact: 'liloroiyce@hotmail.com',
+        isAvailable: true 
+    },
+    
 ]
 
 // Functions
